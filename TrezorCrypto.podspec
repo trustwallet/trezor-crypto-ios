@@ -10,10 +10,12 @@ Pod::Spec.new do |s|
   
   s.ios.deployment_target = '9.0'
   s.osx.deployment_target = '10.10'
+
   s.prepare_command = <<-CMD
     sed -i '' -e 's:ed25519-donna/::g' ./**/*.c
     sed -i '' -e 's:ed25519-donna/::g' ./**/*.h
   CMD
+  s.module_map = 'TrezorCrypto.modulemap'
   search_paths = [
     '"${PODS_ROOT}/trezor-crypto"',
     '"${PODS_ROOT}/trezor-crypto/aes"',
@@ -32,11 +34,37 @@ Pod::Spec.new do |s|
     'trezor-crypto/chacha20poly1305/*.{c,h}',
     'trezor-crypto/ed25519-donna/*.{c,h}'
   s.private_header_files = 
-    'trezor-crypto/*.h',
-    'trezor-crypto/aes/*.h',
-    'trezor-crypto/chacha20poly1305/*.h',
-    'trezor-crypto/ed25519-donna/*.h'
+    'trezor-crypto/aes/aesopt.h',
+    'trezor-crypto/aes/aestab.h',
+    'trezor-crypto/aes/brg_types.h',
+    'trezor-crypto/chacha20poly1305/ecrypt-config.h',
+    'trezor-crypto/chacha20poly1305/ecrypt-machine.h',
+    'trezor-crypto/chacha20poly1305/ecrypt-portable.h',
+    'trezor-crypto/chacha20poly1305/ecrypt-sync.h',
+    'trezor-crypto/chacha20poly1305/ecrypt-donna-32.h',
+    'trezor-crypto/chacha20poly1305/ecrypt-donna.h',
+    'trezor-crypto/chacha20poly1305/rfc7539.h',
+    'trezor-crypto/ed25519-donna/curve25519-donna-32bit.h',
+    'trezor-crypto/ed25519-donna/curve25519-donna-helpers.h',
+    'trezor-crypto/ed25519-donna/curve25519-donna-scalarmult-base.h',
+    'trezor-crypto/ed25519-donna/ed25519-donna-32bit-tables.h',
+    'trezor-crypto/ed25519-donna/ed25519-donna-basepoint-table.h',
+    'trezor-crypto/ed25519-donna/ed25519-donna-impl-base.h',
+    'trezor-crypto/ed25519-donna/ed25519-donna-portable.h',
+    'trezor-crypto/ed25519-donna/ed25519-hash-custom-keccak.h',
+    'trezor-crypto/ed25519-donna/ed25519-hash-custom-sha3.h',
+    'trezor-crypto/ed25519-donna/ed25519-hash-custom.h',
+    'trezor-crypto/ed25519-donna/ed25519-keccak.h',
+    'trezor-crypto/ed25519-donna/ed25519-sha3.h',
+    'trezor-crypto/ed25519-donna/ed25519.h',
+    'trezor-crypto/ed25519-donna/modm-donna-32bit.h',
+    'trezor-crypto/bip39_english.h',
+    'trezor-crypto/blake2_common.h',
+    'trezor-crypto/check_mem.h',
+    'trezor-crypto/macros.h',
+    'trezor-crypto/options.h'
   s.public_header_files =
+    'TrezorCrypto.h',
     'trezor-crypto/aes/aes.h',
     'trezor-crypto/chacha20poly1305/chacha20poly1305.h',
     'trezor-crypto/ed25519-donna/ed25519-donna.h',
