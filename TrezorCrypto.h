@@ -14,7 +14,7 @@ FOUNDATION_EXPORT double TrezorCryptoVersionNumber;
 FOUNDATION_EXPORT const unsigned char TrezorCryptoVersionString[];
 
 #include "aes.h"
-#include "hacha20poly1305.h"
+#include "chacha20poly1305.h"
 #include "ed25519-donna.h"
 #include "address.h"
 #include "base32.h"

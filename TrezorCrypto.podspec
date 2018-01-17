@@ -29,6 +29,7 @@ Pod::Spec.new do |s|
   }
 
   s.source_files = 
+    'TrezorCrypto.h',
     'trezor-crypto/*.{c,h,table}',
     'trezor-crypto/aes/*.{c,h}',
     'trezor-crypto/chacha20poly1305/*.{c,h}',
@@ -36,7 +37,6 @@ Pod::Spec.new do |s|
   s.private_header_files = 
     'trezor-crypto/aes/aesopt.h',
     'trezor-crypto/aes/aestab.h',
-    'trezor-crypto/aes/brg_types.h',
     'trezor-crypto/chacha20poly1305/ecrypt-config.h',
     'trezor-crypto/chacha20poly1305/ecrypt-machine.h',
     'trezor-crypto/chacha20poly1305/ecrypt-portable.h',
@@ -66,6 +66,7 @@ Pod::Spec.new do |s|
   s.public_header_files =
     'TrezorCrypto.h',
     'trezor-crypto/aes/aes.h',
+    'trezor-crypto/aes/brg_types.h',
     'trezor-crypto/chacha20poly1305/chacha20poly1305.h',
     'trezor-crypto/ed25519-donna/ed25519-donna.h',
     'trezor-crypto/address.h',
