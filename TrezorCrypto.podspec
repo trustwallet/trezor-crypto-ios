@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'TrezorCrypto'
-  s.version          = '0.0.3'
+  s.version          = '0.0.6'
   s.summary          = 'Heavily optimized cryptography algorithms for iOS.'
 
   s.homepage         = 'https://github.com/TrustWallet/trezor-crypto-ios'
@@ -12,6 +12,7 @@ Pod::Spec.new do |s|
   s.osx.deployment_target = '10.10'
 
   s.prepare_command = <<-CMD
+    git submodule update --init
     sed -i '' -e 's:ed25519-donna/::g' ./**/*.c
     sed -i '' -e 's:ed25519-donna/::g' ./**/*.h
     sed -i '' -e 's:USE_ETHEREUM 0:USE_ETHEREUM 1:g' trezor-crypto/options.h
@@ -47,7 +48,8 @@ Pod::Spec.new do |s|
     'trezor-crypto/bip39_english.h',
     'trezor-crypto/blake2_common.h',
     'trezor-crypto/check_mem.h',
-    'trezor-crypto/macros.h'
+    'trezor-crypto/macros.h',
+    'trezor-crypto/nem_serialize.h'
   s.exclude_files =
     'trezor-crypto/aes/aestst*.{c,h}',
     'trezor-crypto/gui/*.{c,h}',
