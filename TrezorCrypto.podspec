@@ -1,13 +1,13 @@
 Pod::Spec.new do |s|
   s.name             = 'TrezorCrypto'
-  s.version          = '0.0.6'
+  s.version          = '0.0.7'
   s.summary          = 'Heavily optimized cryptography algorithms for iOS.'
 
   s.homepage         = 'https://github.com/TrustWallet/trezor-crypto-ios'
   s.license          = { type: 'MIT', file: 'trezor-crypto/LICENSE' }
   s.authors          = { 'Alejandro Isaza' => 'al@isaza.ca' }
   s.source           = { git: 'https://github.com/TrustWallet/trezor-crypto-ios.git', tag: s.version, submodules: true }
-  
+
   s.ios.deployment_target = '9.0'
   s.osx.deployment_target = '10.10'
 
@@ -25,18 +25,19 @@ Pod::Spec.new do |s|
     '"${PODS_ROOT}/trezor-crypto/ed25519-donna"'
   ]
   s.pod_target_xcconfig = {
-      'SWIFT_INCLUDE_PATHS' => '${PODS_ROOT}',
-      'OTHER_CFLAGS' => '-O3 -std=c99',
-      'HEADER_SEARCH_PATHS' => search_paths.join(' ')
+    'SWIFT_INCLUDE_PATHS' => '${PODS_ROOT}',
+    'OTHER_CFLAGS' => '-O3 -std=c99 -DRAND_PLATFORM_INDEPENDENT',
+    'HEADER_SEARCH_PATHS' => search_paths.join(' ')
   }
 
-  s.source_files = 
+  s.source_files =
     'TrezorCrypto.h',
+    'util/SecRandom.m',
     'trezor-crypto/*.{c,h,table}',
     'trezor-crypto/aes/*.{c,h}',
     'trezor-crypto/chacha20poly1305/*.{c,h}',
     'trezor-crypto/ed25519-donna/*.{c,h}'
-  s.private_header_files = 
+  s.private_header_files =
     'trezor-crypto/aes/aesopt.h',
     'trezor-crypto/aes/aestab.h',
     'trezor-crypto/ed25519-donna/curve25519-donna-scalarmult-base.h',
