@@ -11,5 +11,4 @@ uint32_t random32(void) {
 void random_buffer(uint8_t *buf, size_t len) {
     int status = SecRandomCopyBytes(kSecRandomDefault, len, buf);
     NSCAssert(status == errSecSuccess, @"Failed to generate random number");
-    return value;
 }
