@@ -33,7 +33,7 @@ Pod::Spec.new do |s|
   s.source_files =
     'TrezorCrypto.h',
     'util/SecRandom.m',
-    'trezor-crypto/*.{c,h,table}',
+    'trezor-crypto/*.{c,h}',
     'trezor-crypto/aes/*.{c,h}',
     'trezor-crypto/chacha20poly1305/*.{c,h}',
     'trezor-crypto/ed25519-donna/*.{c,h}'
@@ -57,5 +57,6 @@ Pod::Spec.new do |s|
     'trezor-crypto/rfc6979.c',
     'trezor-crypto/test*.{c,h}',
     'trezor-crypto/tools/*.{c,h}'
+  s.preserve_path = 'trezor-crypto/*.{table}'
   s.libraries = 'c'
 end
